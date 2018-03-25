@@ -1,0 +1,78 @@
+if(!find($job, "Unknown") && $job != "No id" && !find($source, " (as ")){ // By Gary
+    if($job == "Chief Medical Officer")
+    {
+        if($freq == $medical){$filters = vector($loud,$commanding);}
+        $job = "CMO";
+    }
+    elseif($job == "Chief Engineer")
+    {
+        if($freq == $engineering){$filters = vector($loud,$commanding);}
+        $job = "CE";
+    }
+    elseif($job == "Head of Personnel"){$job = "HoP";}
+    elseif($job == "Research Director")
+    {
+        if($freq == $science){$filters = vector($loud,$commanding);}
+        $job = "RD";
+    }
+    elseif($job == "Machine"){$job = "";}
+    elseif($job == "Default Cyborg"){$job = "Cyborg";}
+    elseif($job == "Engineering Cyborg"){$job = "Engibot";}
+    elseif($job == "Security Cyborg"){$job = "Secbot";}
+    elseif($job == "Medical Cyborg"){$job = "Medbot";}
+    elseif($job == "Station Engineer"){$job = "Engineer";}
+    elseif($job == "Atmospheric Technician"){$job = "Atmos Tech";}
+    elseif($job == "Cargo Technician"){$job = "Cargo Tech";}
+    elseif($job == "Shaft Miner"){$job = "Miner";} // They don't even mine in shafts?
+    elseif($job == "Captain")
+    {
+        $filters = vector($loud,$commanding); // Gets to be loud no matter the situation
+    }
+    elseif($job == "Head of Security")
+    {
+        if($freq == $security){$filters = vector($loud,$commanding);}
+        // This makes him only loud on his own department's channel
+        $job = "HoS";
+    }
+    if(find($job,"Clown")) // The find() allows for dumb job names like "Cargo Clown"
+    {
+        $source = "Silent Sam"
+        $say = "BREAKS HIS OATH BY SAYING";
+        $yell = "BREAKS HIS OATH BY YELLING";
+        $ask = "DEMANDS TO BE LYNCHED BY ASKING";
+        $exclaim = "DESERVES TO DIE FOR SCREAMING";
+        $job = "Mime";
+    }
+    elseif($job == "Mime")
+    {
+        $source = "Bubbles"
+        $filters = vector($wacky);
+        $say = "honks";
+        $yell = "henks";
+        $ask = "hunks";
+        $exclaim = "screeches";
+        $job = "Clown";
+    }
+    elseif($job == "AI")
+    {
+        $filters = vector($loud,$robot);
+        $say = "beeps";
+        $yell = "boops";
+        $ask = "bips";
+        $exclaim = "bops";
+    }
+    elseif($job == "Signal Technician")
+    {
+        $say = "boasts";
+        $yell = "hacks";
+        $exclaim = "proclaims";
+        $job = pick("Elite Hacker", "AI",$source,"Drone", "Nuke Ops Captain", "Sexy Beast", "CEO of Telecomintern");
+        $filters = vector($loud,$wacky);
+    }
+    elseif($job == "Security Officer"){$job = "Officer";}
+    elseif($job == "Quartermaster"){$job = "QM";}
+    
+    if($job != "") {
+        $source = $source + " (" + $job + ")";
+    }
+}
