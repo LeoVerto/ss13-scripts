@@ -2,37 +2,43 @@ if(!find($job, "Unknown") && $job != "No id" && !find($source, " (as ")){ // By 
     if($job == "Chief Medical Officer")
     {
         if($freq == $medical){$filters = vector($loud,$commanding);}
-        $job = "CMO";
+        $job = "Wacky Nutjob";
     }
     elseif($job == "Chief Engineer")
     {
         if($freq == $engineering){$filters = vector($loud,$commanding);}
-        $job = "CE";
+        $job = "Tony Stark";
     }
     elseif($job == "Head of Personnel"){$job = "HoP";}
     elseif($job == "Research Director")
     {
         if($freq == $science){$filters = vector($loud,$commanding);}
-        $job = "RD";
+        $job = "Mad Scientist";
     }
     elseif($job == "Machine"){$job = "";}
+    elseif($job == "Botanist"){$job = "Weed Dealer";}
+    elseif($job == "Warden"){$job = "Glorified Security Bot";}
+    elseif($job == "Detective"){$job = "Station Alcoholic";}
+    elseif($job == "Assistant"){$job = "Captain";}
+    elseif($job == "AI"){$job = "Assistant";}
     elseif($job == "Default Cyborg"){$job = "Cyborg";}
     elseif($job == "Engineering Cyborg"){$job = "Engibot";}
-    elseif($job == "Security Cyborg"){$job = "Secbot";}
+    elseif($job == "Security Cyborg"){$job = "Head of Security";}
     elseif($job == "Medical Cyborg"){$job = "Medbot";}
     elseif($job == "Station Engineer"){$job = "Engineer";}
     elseif($job == "Atmospheric Technician"){$job = "Atmos Tech";}
-    elseif($job == "Cargo Technician"){$job = "Cargo Tech";}
+    elseif($job == "Cargo Technician"){$job = "Cargonian";}
     elseif($job == "Shaft Miner"){$job = "Miner";} // They don't even mine in shafts?
     elseif($job == "Captain")
     {
         $filters = vector($loud,$commanding); // Gets to be loud no matter the situation
+        $job = "Jar-Jar Binks";
     }
     elseif($job == "Head of Security")
     {
         if($freq == $security){$filters = vector($loud,$commanding);}
         // This makes him only loud on his own department's channel
-        $job = "HoS";
+        $job = "Head of Shitcurity";
     }
     if(find($job,"Clown")) // The find() allows for dumb job names like "Cargo Clown"
     {
@@ -69,8 +75,9 @@ if(!find($job, "Unknown") && $job != "No id" && !find($source, " (as ")){ // By 
         $job = pick("Elite Hacker", "AI",$source,"Drone", "Nuke Ops Captain", "Sexy Beast", "CEO of Telecomintern", "Timelord", "Raddest guy around");
         $filters = vector($loud,$wacky);
     }
-    elseif($job == "Security Officer"){$job = "Officer";}
-    elseif($job == "Quartermaster"){$job = "QM";}
+    elseif($job == "Security Officer"){$job = "Shitcurity";}
+    elseif($job == "Officer"){$job = "Shitcurity";}
+    elseif($job == "Quartermaster"){$job = "Consul of Cargonia";}
     
     if($job != "") {
         $source = $source + " (" + $job + ")";
